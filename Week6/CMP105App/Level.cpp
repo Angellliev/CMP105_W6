@@ -2,8 +2,11 @@
 
 Level::Level(sf::RenderWindow* hwnd, Input* in)
 {
+	mousePressedX = 0;
+	mousePressedY = 0;
 	window = hwnd;
 	input = in;
+	mouseIsPressed = false;
 	
 	// initialise game objects
 	beachBall.setInput(input);
@@ -19,6 +22,11 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	goombaTexture.loadFromFile("gfx/Goomba.png");
 	goomba.setSize(sf::Vector2f(50, 50));
 	goomba.setTexture(&goombaTexture);
+
+	slingshotTexture.loadFromFile("gfx/MushroomMask.png");
+	slingshot.setSize(sf::Vector2f(100, 100));
+	slingshot.setPosition(window->getSize().x * .5, window->getSize().y * .5);
+	slingshot.setTexture(&slingshotTexture);
 }
 
 Level::~Level()
@@ -29,7 +37,23 @@ Level::~Level()
 // handle user input
 void Level::handleInput(float dt)
 {
+	if (input->isMouseLDown())
+	{
+		if (mouseIsPressed == false)
+		{
+			mousePressedX = input->getMouseX();
+			mousePressedY = input->getMouseY();
+		}
+		mouseIsPressed = true;
 
+	}
+
+	if (!input->isMouseLDown() && mouseIsPressed)
+	{
+		mouseIsPressed = false;
+		mouseDrag.x = input->getMouseX() - mousePressedX;
+		mouseDrag.y = input->getMouseY() - mousePressedY;
+	}
 }
 
 // Update game objects
@@ -38,6 +62,7 @@ void Level::update(float dt)
 	beachBall.update(dt, window->getSize().y);
 	mushroom.update(dt, window->getSize().x, window->getSize().y);
 	goomba.update(dt, input->getMouseX(), input->getMouseY());
+	slingshot.update(dt, mouseDrag);
 }
 
 // Render level
@@ -47,6 +72,7 @@ void Level::render()
 	window->draw(beachBall);
 	window->draw(mushroom);
 	window->draw(goomba);
+	window->draw(slingshot);
 	endDraw();
 }
 

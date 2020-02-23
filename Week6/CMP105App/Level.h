@@ -7,7 +7,7 @@
 #include "BeachBall.h"
 #include "Mushroom.h"
 #include "Goomba.h"
-
+#include "Slingshot.h"
 
 class Level{
 public:
@@ -23,6 +23,12 @@ private:
 	void beginDraw();
 	void endDraw();
 
+	//Mouse controlls
+	bool mouseIsPressed;
+	int mousePressedX;
+	int mousePressedY;
+	sf::Vector2f mouseDrag;
+
 	// Default variables for level class.
 	sf::RenderWindow* window;
 	Input* input;
@@ -37,4 +43,6 @@ private:
 	Goomba goomba;
 	sf::Texture goombaTexture;
 
+	Slingshot slingshot;
+	sf::Texture slingshotTexture;
 };

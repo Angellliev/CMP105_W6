@@ -12,7 +12,7 @@ void BeachBall::update(float dt, int windowSize)
 {
 	if (getPosition().y < windowSize - getSize().y)
 	{
-		velocity = velocity + acceleration * dt;
+		velocity += acceleration * dt;
 	}
 	else if (getPosition().y >= windowSize - getSize().y)
 	{
