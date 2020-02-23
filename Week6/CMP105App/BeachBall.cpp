@@ -23,7 +23,7 @@ void BeachBall::update(float dt, int windowSize)
 
 	if (input->isKeyDown(sf::Keyboard::Space) && !hasJumped)
 	{
-		velocity = -1.5;
+		velocity = -0.7;
 		hasJumped = true;
 	}
 
@@ -38,10 +38,4 @@ void BeachBall::update(float dt, int windowSize)
 
 
 
-//void BeachBall::stopFall()
-//{
-//	
-//	
-//
-//	
-//}
+

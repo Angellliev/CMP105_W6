@@ -11,6 +11,10 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	beachBall.setSize(sf::Vector2f(80, 80));
 	beachBall.setPosition(40, 40);
 	beachBall.setTexture(&beachBallTexture);
+
+	mushroomTexture.loadFromFile("gfx/MushroomTrans.png");
+	mushroom.setSize(sf::Vector2f(45, 45));
+	mushroom.setTexture(&mushroomTexture);
 }
 
 Level::~Level()
@@ -28,6 +32,7 @@ void Level::handleInput(float dt)
 void Level::update(float dt)
 {
 	beachBall.update(dt, window->getSize().y);
+	mushroom.update(dt, window->getSize().x, window->getSize().y);
 }
 
 // Render level
@@ -35,6 +40,7 @@ void Level::render()
 {
 	beginDraw();
 	window->draw(beachBall);
+	window->draw(mushroom);
 	endDraw();
 }
 

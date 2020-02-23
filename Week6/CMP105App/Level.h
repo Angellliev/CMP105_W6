@@ -5,6 +5,7 @@
 #include <string.h>
 #include <iostream>
 #include "BeachBall.h"
+#include "Mushroom.h"
 
 
 class Level{
@@ -28,4 +29,7 @@ private:
 	// More level variables
 	BeachBall beachBall;
 	sf::Texture beachBallTexture;
+
+	Mushroom mushroom;
+	sf::Texture mushroomTexture;
 };

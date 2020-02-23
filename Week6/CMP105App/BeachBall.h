@@ -10,6 +10,5 @@ class BeachBall: public GameObject
 public:
 	BeachBall();
 	void update(float dt, int windowSize);
-	void jump();
 };
 
