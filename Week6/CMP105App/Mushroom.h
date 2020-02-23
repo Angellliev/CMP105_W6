@@ -4,7 +4,6 @@
 
 class Mushroom: public GameObject
 {
-	
 	sf::Vector2f velocity;
 	sf::Vector2f target;
 	float acceleration;

@@ -18,8 +18,5 @@ void Mushroom::update(float dt, int windowSizeX, int windowSizeY)
 		velocity = sf::Vector2f(0,0);
 		acceleration = 0;
 	}
-	if (windowSizeX - getPosition().x == 0)
-	{
-
-	}
+	
 }

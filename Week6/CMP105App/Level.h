@@ -6,6 +6,7 @@
 #include <iostream>
 #include "BeachBall.h"
 #include "Mushroom.h"
+#include "Goomba.h"
 
 
 class Level{
@@ -32,4 +33,8 @@ private:
 
 	Mushroom mushroom;
 	sf::Texture mushroomTexture;
+
+	Goomba goomba;
+	sf::Texture goombaTexture;
+
 };

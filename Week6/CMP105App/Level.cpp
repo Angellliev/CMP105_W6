@@ -15,6 +15,10 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	mushroomTexture.loadFromFile("gfx/MushroomTrans.png");
 	mushroom.setSize(sf::Vector2f(45, 45));
 	mushroom.setTexture(&mushroomTexture);
+
+	goombaTexture.loadFromFile("gfx/Goomba.png");
+	goomba.setSize(sf::Vector2f(50, 50));
+	goomba.setTexture(&goombaTexture);
 }
 
 Level::~Level()
@@ -33,6 +37,7 @@ void Level::update(float dt)
 {
 	beachBall.update(dt, window->getSize().y);
 	mushroom.update(dt, window->getSize().x, window->getSize().y);
+	goomba.update(dt, input->getMouseX(), input->getMouseY());
 }
 
 // Render level
@@ -41,6 +46,7 @@ void Level::render()
 	beginDraw();
 	window->draw(beachBall);
 	window->draw(mushroom);
+	window->draw(goomba);
 	endDraw();
 }
 
